@@ -53,13 +53,19 @@ patterns: [
         name: "variable.parameter.function.viz"
         patterns: [
           {
-            match: "(?i:\\s*\\b(Array|Boolean|Byte|Char|Date|Decimal|Double|Integer|Long|Object|Println|SByte|Short|Single|String|StringMap|UInteger|ULong|UShort)\\b)"
-            name: "storage.type.function.viz"
+            match: "(?i:\\s*\\b(Alpha|Base|BezierHandle|Camera|Center|Channel|ClipChannel|Color|Container|DateTime|Director|Expert|Geometry|Gesture|GestureRecognizer|Procedures|Grid|Image|InfoText|Key|Keyframe|Light|Material|Matrix|PluginInstance|Position|Rotation|Scaling|Scene|Script|ScriptSettings|SharedMemory|Stage|StringMap|System|Texture|Timecode|Touch|Trace|Uuid|Variant|Vertex|VizCommunication|Array|Boolean|Byte|Char|Date|Decimal|Double|Integer|Long|Object|Println|SByte|Short|Single|String|StringMap|UInteger|ULong|UShort)\\b)"
+            name: "storage.type.viz"
+          }
+          {
+            match: "(as )"
+            name: "keyword.control.viz"
           }
         ]
       "5":
         name: "punctuation.definition.parameters.viz"
-    match: "^\\s*((?i:function|sub))\\s*([a-zA-Z_]\\w*)\\s*(\\()([^)]*)(\\)).*\\n?"
+      "6":
+        name: "keyword.control.viz"
+    match: "^\\s*((?i:function|sub))\\s*([a-zA-Z_]\\w*)\\s*(\\()([^)]*)(\\))( as [a-zA-Z_]\\w*).*\\n?"
     name: "meta.function.viz"
   }
   {
@@ -97,19 +103,18 @@ patterns: [
       "1":
         name: "storage.type.viz"
       "2":
-        name: "variable.other.bfeac.viz"
+        name: ""
       "3":
         name: "meta.separator.comma.viz"
     match: "(?i:(dim)\\s*(?:(\\b[a-zA-Z_x7f-xff][a-zA-Z0-9_x7f-xff]*?\\b)\\s*(,?)))"
-    name: "variable.other.dim.viz"
   }
   {
-    match: "(?i:\\s*\\b(Call|Class|End Class|Const|Dim|Redim|Function|Sub|Private Sub|Public Sub|End sub|End Function|Set|End Set|Let|Get|End Get|Randomize|Option Explicit|On Error Resume Next|On Error GoTo|Operator|End Operator|Enum|End Enum|Event|Delegate|Interface|End Interface|Declare|Lib|Module|End Module|Namespace|End Namespace|On|Property|End Property|Resume|Structure|End Structure)\\b\\s*)"
+    match: "(?i:\\s*\\b(Class|End Class|Const|Dim|Redim|Function|Sub|Private Sub|Public Sub|End sub|End Function|Set|End Set|Let|Get|End Get|Randomize|Option Explicit|On Error Resume Next|On Error GoTo|Operator|End Operator|Enum|End Enum|Event|Delegate|Interface|End Interface|Declare|Lib|Module|End Module|Namespace|End Namespace|On|Property|End Property|Resume|Structure|End Structure)\\b\\s*)"
     name: "storage.type.viz"
   }
   {
     match: "(?i:\\s*\\b(Array|Boolean|Byte|Char|Date|Decimal|Double|Integer|Long|Object|Println|SByte|Short|Single|String|UInteger|ULong|UShort)\\b\\s*)" # variable types
-    name: "support.function.viz"
+    name: "storage.type.viz"
   }
   {
     match: "(?i:\\s*\\b(Alpha|Base|BezierHandle|Camera|Center|Channel|ClipChannel|Color|Container|DateTime|Director|Expert|Geometry|Gesture|GestureRecognizer|Procedures|Grid|Image|InfoText|Key|Keyframe|Light|Material|Matrix|PluginInstance|Position|Rotation|Scaling|Scene|Script|ScriptSettings|SharedMemory|Stage|StringMap|System|Texture|Timecode|Touch|Trace|Uuid|Variant|Vertex|VizCommunication)\\b\\s*)" # viz variable types
@@ -150,14 +155,14 @@ patterns: [
   }
   {
     match: "(?i:(?<=as )(\\b[a-zA-Z_x7f-xff][a-zA-Z0-9_x7f-xff]*?\\b))"
-    name: "support.type.viz"
+    name: ""
   }
   {
-    match: "(?i:\\b(Add|Asc|Atn|CBool|CByte|CCur|CDate|CDbl|Chr|CInt|CLng|Conversions|Cos|CreateObject|CSng|CStr|Date|DateAdd|DateDiff|DatePart|DateSerial|DateValue|Day|Derived|Math|Escape|Eval|Exists|Exp|Filter|FormatCurrency|FormatDateTime|FormatNumber|FormatPercent|GetLocale|GetObject|GetRef|Hex|Hour|InputBox|InStr|InStrRev|Int|Fix|IsArray|IsDate|IsEmpty|IsNull|IsNumeric|IsObject|Item|Items|Join|Keys|LBound|LCase|Left|Len|LoadPicture|Log|LTrim|RTrim|Trim|Maths|Mid|Minute|Month|MonthName|MsgBox|Now|Oct|Remove|RemoveAll|Replace|RGB|Right|Rnd|Round|ScriptEngine|ScriptEngineBuildVersion|ScriptEngineMajorVersion|ScriptEngineMinorVersion|Second|SetLocale|Sgn|Sin|Space|Split|Sqr|StrComp|String|StrReverse|Tan|Time|Timer|TimeSerial|TimeValue|TypeName|UBound|UCase|Unescape|VarType|Weekday|WeekdayName|Year|CChar|CDec|CSByte|CShort|CType|CUInt|CULng|CUShort|GetType|GetXMLNamespace)\\b)"
+    match: "(?i:\\b(Add|Asc|Atn|CBool|CByte|CCur|CDate|CDbl|Chr|CInt|CLng|Conversions|Cos|CreateObject|CSng|CStr|Date|DateAdd|DateDiff|DatePart|DateSerial|DateValue|Day|Derived|Math|Escape|Eval|Exists|Exp|Filter|FormatCurrency|FormatDateTime|FormatNumber|FormatPercent|GetLocale|GetObject|GetRef|Hex|Hour|InputBox|InStr|InStrRev|Int|Fix|IsArray|IsDate|IsEmpty|IsNull|IsNumeric|IsObject|Item|Items|Join|Keys|LBound|LCase|Left|Len|LoadPicture|Log|LTrim|RTrim|Trim|Maths|Mid|Minute|Month|MonthName|MsgBox|Now|Oct|Remove|RemoveAll|Replace|RGB|Right|Rnd|Round|ScriptEngine|ScriptEngineBuildVersion|ScriptEngineMajorVersion|ScriptEngineMinorVersion|Second|SetLocale|Sgn|Sin|Space|Split|Sqr|StrComp|String|StrReverse|Tan|Time|Timer|TimeSerial|TimeValue|TypeName|UBound|UCase|Unescape|VarType|Weekday|WeekdayName|Year|CChar|CDec|CSByte|CShort|CType|CUInt|CULng|CUShort|GetType|GetXMLNamespace|VizId)\\b)"
     name: "support.function.viz"
   }
   {
-      match: "(?i:\\b(FindContainer)\\b)"
+      match: "(?i:\\b(FindContainer|VizId)\\b)"
       name: "support.function.viz"
   }
   {
@@ -173,7 +178,7 @@ patterns: [
   }
   {
     match: "(?i:((?<=(\\+|=|-|\\&|\\\\|/|<|>|\\(|,))\\s*\\b([a-zA-Z_x7f-xff][a-zA-Z0-9_x7f-xff]*?)\\b(?!(\\(|\\.))|\\b([a-zA-Z_x7f-xff][a-zA-Z0-9_x7f-xff]*?)\\b(?=\\s*(\\+|=|-|\\&|\\\\|/|<|>|\\(|\\)))))"
-    name: "variable.other.viz"
+    name: ""
   }
   {
     match: "!|\\$|%|&|\\*|\\-\\-|\\-|\\+\\+|\\+|~|===|==|=|!=|!==|<=|>=|<<=|>>=|>>>=|<>|<|>|!|&&|\\|\\||\\?\\:|\\*=|/=|%=|\\+=|\\-=|&=|\\^=|\\b(New|#Region|#End Region|#Const|#If|#ElseIf|#End If)\\b"
